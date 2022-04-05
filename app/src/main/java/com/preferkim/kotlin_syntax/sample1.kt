@@ -69,3 +69,29 @@ fun checkNum(score: Int) { // 리턴타입 없음
     }
 
 }
+
+
+/* (보충) Expression Vs. Statement
+
+- 어떤 식을 써서 '값'을 만들면 표현식임
+fun maxBy2(a: Int, b: Int) = if (a > b) a else b 의 경우 값을 만듦으로, 표현식임
+
+- 아래 식의 경우, when이 어떤 값을 만드는 것은 아니므로 Statement(실행하도록 하는 문장)
+when (score) {
+    0 -> println("this is 0")
+    1 -> println("this is 1")
+    2, 3 -> println("this is 2 or 3")// 복수 인정 가능
+    else -> println("this is else")
+}
+
+- 아래의 when의 경우는 값을 만들어 내기 때문에 Expression임
+var b = when (score) {
+    1 -> 1
+    2 -> 2
+    else -> 3
+}
+
+- 코틀린의 모든 함수는 Expression임. return type이 없어도 사실은 Unit을 리턴하기 때문,
+반면에 Java의 void 리턴 타입의 함수는 Statement가 맞다.
+
+ */
