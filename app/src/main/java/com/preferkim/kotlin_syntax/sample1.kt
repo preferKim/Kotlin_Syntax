@@ -1,7 +1,9 @@
 package com.preferkim.kotlin_syntax
 
 fun main() {
-    checkNum(1)
+
+    forAndWhile()
+
 }
 
 // 1. 함수
@@ -124,4 +126,35 @@ fun array() {
     arrayList.add(3)
     arrayList.add(4)
     arrayList[0] = 20
+}
+
+// 6. 반복문 for, while
+fun forAndWhile() {
+
+    // for문
+    val students = arrayListOf("Kim", "Lee", "Park")
+
+    for (name in students) {
+        println("name: ${name}")
+    }
+
+    // 인덱스와 함께 사용하기
+    for ((index, name) in students.withIndex()) {
+        println("${index + 1}번째 학생 : ${name}")
+    }
+
+    var sum: Int = 0
+//    for (i in 1..10 step 2) { // i = 1, 3, 5, 7, 9
+//    for (i in 10 downTo 1) { // i = 10, 9, 8, ... , 1
+    for (i in 1 until 100) { // i = 1 ~ 99. 100은 포함하지 않는다.
+        sum += i
+    }
+    println(sum)
+
+    // while문
+    var index = 0;
+    while (index < 10) {
+        print("${index} ")
+        index++
+    }
 }
