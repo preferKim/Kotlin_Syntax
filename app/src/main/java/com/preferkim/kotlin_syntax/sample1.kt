@@ -2,7 +2,7 @@ package com.preferkim.kotlin_syntax
 
 fun main() {
 
-    forAndWhile()
+    nullCheck()
 
 }
 
@@ -157,4 +157,35 @@ fun forAndWhile() {
         print("${index} ")
         index++
     }
+}
+
+// 7. Nullable Vs NoneNull
+fun nullCheck() {
+    /*
+    NPE : Null Pointer Exception, 자바에서는 NPE가 빌드 시점 말고 런타임에서만 발생함.
+    -> 코틀린에서는 빌드타임에서 전부 잡기위해 NoneNull이 등장
+     */
+
+    var name: String = "Joyce" // String은 NoneNull 타입이다.
+    var nullName: String? = null // 물음표 하나 붙여주면 Nullable 타입이 된다.
+
+    var nameInUpperCase = name.toUpperCase()
+    var nullNameInUpperCase =
+        nullName?.toUpperCase() // nullName이 null이 아니면 toUpperCase를 하고, null이면 null을 리턴
+
+    // '?:' (엘비스 연산자), '?:'의 왼쪽 객체가 non-null이면 그 객체의 값이 리턴되고, null이라면 '?:'의 오른쪽 값을 리턴
+//    var lastName: String? = null
+    var lastName: String? = "Hong"
+    val fullName = name + " " + (lastName
+        ?: "No lastName") // lastName이 있으면 해당 참조값 리턴. null이라면 "No lastName"을 리턴
+    println(fullName)
+
+}
+
+// !! 연산자 : 컴파일러에게 이 변수는 절대 null이 아님을 알려주는 표기, 지양하는 것이 좋다.
+fun igonreNull(str: String?) { // null일 수도 있는 매개변수 str
+
+    var thisIsNotNull: String = str!! //  str이 절대 null이 아님을 컴파일러에게 알려줌
+    var upper: String = thisIsNotNull // thisIsNotNull이 null이 아니라고 알려줬기 때문에(!!을 사용함으로써), String뒤에 ?를 붙여 주지 않음
+
 }
