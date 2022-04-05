@@ -95,3 +95,33 @@ var b = when (score) {
 반면에 Java의 void 리턴 타입의 함수는 Statement가 맞다.
 
  */
+
+
+/* 5. Array Vs. List
+
+- Array : 사이즈가 미리 정해져있음, 값을 변경하는 것은 가능 (mutable)
+
+- List : 사이즈는 동적할당. List이냐 MutableList이냐에 따라 값 변경에 대한 제약이 있음
+    - 1. List (Immutable) : 값 변경 불가능, 읽기 전용
+    - 2. MutableList  : 값 변경 가능
+
+ */
+
+fun array() {
+    val array = arrayOf(1, 2, 3) //  참조값 자체는 안 바뀌기 때문에 value.
+    val list = listOf(1, 2, 3)
+
+    val array2 = arrayOf(1, "d", 0.3) // Array<Any>
+    val list2 = listOf(1, "d", 0.3)
+
+    array[0] = 3 // array 값 변경 가능
+//    list [0] = 2 // 에러. 값 변경 불가능
+    val result = list.get(0) // List는 interface이므로 get으로 접근에서 읽기만 사용
+
+    // MutableList의 대표적인 예: ArrayList
+    val arrayList = arrayListOf<Int>()
+    arrayList.add(2)
+    arrayList.add(3)
+    arrayList.add(4)
+    arrayList[0] = 20
+}
