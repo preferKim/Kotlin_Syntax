@@ -2,7 +2,7 @@ package com.preferkim.kotlin_syntax
 
 fun main() {
 
-    nullCheck()
+    letFunction()
 
 }
 
@@ -186,6 +186,18 @@ fun nullCheck() {
 fun igonreNull(str: String?) { // null일 수도 있는 매개변수 str
 
     var thisIsNotNull: String = str!! //  str이 절대 null이 아님을 컴파일러에게 알려줌
-    var upper: String = thisIsNotNull // thisIsNotNull이 null이 아니라고 알려줬기 때문에(!!을 사용함으로써), String뒤에 ?를 붙여 주지 않음
+    var upper: String =
+        thisIsNotNull // thisIsNotNull이 null이 아니라고 알려줬기 때문에(!!을 사용함으로써), String뒤에 ?를 붙여 주지 않음
+
+}
+
+// let()함수 : let()은 함수를 호출하는 객체를 이어지는 블록의 인자로 넘기고, 블록의 결과값을 반환한다.
+fun letFunction() {
+
+    var email: String? = null
+//    var email: String? = "joycehongxxxx@gmail.com"
+    email?.let { // email이 null이라면 let { } 내부로 이동 안 함, email이 null이 아니라면 let { } 내부로 이동(email을 인자로 넘기면서)
+        println("my email : ${email}")
+    }
 
 }
